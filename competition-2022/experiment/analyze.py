@@ -34,6 +34,8 @@ if __name__ == '__main__':
             help='Run tuned version of estimators. Only applies when ml=None')
     parser.add_argument('-n_jobs',action='store',dest='N_JOBS',default=4,type=int,
             help='Number of parallel jobs')
+    parser.add_argument('-n_threads', action='store', dest='N_THREADS', default='4', type=str,
+            help='Number of parallel threads per job')
     parser.add_argument('-time_limit',action='store',dest='TIME',default=None,
             type=str, help='Time limit (hr:min) e.g. 24:00')
     parser.add_argument('-seed',action='store',dest='SEED',default=None,
@@ -184,6 +186,7 @@ if __name__ == '__main__':
                         f' -seed {random_state} '
                         f' -stage {args.stage}'
                         f' -max_samples {args.max_samples}'
+                        f' -n_jobs {args.N_THREADS}'
                         f" {'-test' if args.TEST else ''}"
                         # .format(
                         #     SCRIPT=args.SCRIPT,
