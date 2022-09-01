@@ -5,4 +5,5 @@ else
     mls=''
 fi
 
-python analyze.py data/stage0/ -results ../results_stage0 -n_jobs 4 -m 16384 -n_trials 5 $mls
+python3 analyze.py data/stage0/ -results ../results_stage0 --local -n_jobs 4 -m 16384 -n_trials 5 $mls
+

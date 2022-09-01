@@ -5,7 +5,7 @@ import numpy as np
 from glob import glob
 import argparse
 import os, errno, sys
-# from joblib import Parallel, delayed
+from joblib import Parallel, delayed
 from seeds import SEEDS
 from yaml import load, Loader
 from utils import Competitors, FilteredCompetitors
@@ -222,9 +222,8 @@ if __name__ == '__main__':
         if args.dry_run:
             for run_cmd in all_commands:
                 print(run_cmd)
-        # else:
-        #     Parallel(n_jobs=args.N_JOBS)(delayed(os.system)(run_cmd)
-        #                          for run_cmd in all_commands)
+        else:
+            Parallel(n_jobs=args.N_JOBS)(delayed(os.system)(run_cmd) for run_cmd in all_commands)
     else:
         # LSF 
         for i,run_cmd in enumerate(all_commands):
