@@ -1,0 +1,9 @@
+if (($#==1)); #check if number of arguments is 1 
+then
+    mls="-ml ${1}"
+else
+    mls=''
+fi
+
+python3 analyze.py data/stage0/ -results ../results_stage0 --local -n_jobs 3 -n_threads 4 -m 16384 -n_trials 5 $mls
+
