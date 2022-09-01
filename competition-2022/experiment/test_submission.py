@@ -102,8 +102,9 @@ def test_sympy(ml):
 
     raw_model = r['symbolic_model']
     print('raw_model:',raw_model)
-    X, labels, features = read_file(dataset)
-    local_dict = {k:Symbol(k) for k in features}
+    X_train, X_test, y_train, y_test, idx_train, idx_test, feature_names = read_file(
+        dataset)
+    local_dict = {k: Symbol(k) for k in feature_names}
 
     model_sym = parse_expr(raw_model, local_dict = local_dict)
     model_sym = round_floats(model_sym)
