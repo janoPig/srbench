@@ -55,14 +55,16 @@ def test_import(ml):
             'max_train_samples':int,
             'scale_x':bool,
             'scale_y':bool,
-            'pre_train':types.FunctionType
+            'pre_train':types.FunctionType,
+            'DataFrame':bool
         }
         for k,v in eval_kwargs.items():
             assert k in ['test_params', 
                          'max_train_samples', 
                          'scale_x', 
                          'scale_y',
-                         'pre_train'
+                         'pre_train',
+                         'DataFrame'
                         ]
             assert isinstance(v, eval_kwarg_types[k])
 
