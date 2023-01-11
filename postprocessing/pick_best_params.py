@@ -26,6 +26,7 @@ symbolic_algs = [
     'MRGP',
     'Operon',
     'SBP-GP',
+    'HROCH'
 ]
 sr_filenames = [
     'AFPRegressor',
@@ -41,7 +42,8 @@ sr_filenames = [
     'ITEARegressor',
     'MRGPRegressor',
     'OperonRegressor',
-    'sembackpropgp'
+    'sembackpropgp',
+    'PHCRegressor'
     ]
 sr_name_to_filename = {k:v for k,v in zip(symbolic_algs, sr_filenames)}
 # read data from feather

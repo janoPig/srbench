@@ -91,6 +91,8 @@ df_results['algorithm'] = df_results['algorithm'].apply(lambda x: x.replace('sem
 df_results['algorithm'] = df_results['algorithm'].apply(lambda x: x.replace('FE_AFP','AFP_FE'))
 # rename GPGOMEA to GP-GOMEA
 df_results['algorithm'] = df_results['algorithm'].apply(lambda x: x.replace('GPGOMEA','GP-GOMEA'))
+# rename PHC to HROCH
+df_results['algorithm'] = df_results['algorithm'].apply(lambda x: x.replace('PHC', 'HROCH'))
 # indicator of strogatz or feynman
 df_results['data_group'] = df_results['dataset'].apply(lambda x: 'Feynman' if 'feynman' in x else 'Strogatz') 
 
@@ -108,6 +110,8 @@ df_results.loc[:,'symbolic_solution'] = df_results['symbolic_solution'] & ~(df_r
 ##########
 # save results
 ##########
-df_results.to_feather('../results/ground-truth_results.feather')
+df_old = pd.read_feather('../results/ground-truth_results.feather')
+result = pd.concat([df_old, df_results]).reset_index()
+result.to_feather('../results/ground-truth_results.feather')
 print('results saved to ../results/ground-truth_results.feather')
 
