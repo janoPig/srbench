@@ -48,6 +48,9 @@ dependencies:
     # PySR:
     - julia # Note that this is julia itself.
     - openlibm
+    # other
+    - tqdm
+    - pyarrow
     # pip
     - pip=20.3.3 
     - pip:
@@ -62,3 +65,5 @@ dependencies:
         # PySR:
         - julia==0.5.7 # Note that this is PyJulia (pip name julia)
         - pysr==0.7.0a3
+        # HROCH
+        - git+https://github.com/janoPig/HROCH.git

@@ -22,11 +22,16 @@ from utils import jsonify
 from symbolic_utils import (clean_pred_model,get_sym_model,round_floats,
                             complexity, rewrite_AIFeynman_model_size)
 from sympy import simplify
+import signal
 
 def save(r,save_file):
     print('saving...')
     with open(save_file + '.updated', 'w') as out:
         json.dump(jsonify(r), out, indent=4)
+
+
+def timeout_handler(signum, frame):
+   raise Exception("Sympy timeout")
 
 def assess_symbolic_model_from_file(json_file, dataset):
     
@@ -46,6 +51,9 @@ def assess_symbolic_model_from_file(json_file, dataset):
     if 'AIFeynman' in est_name:
         # correct model size
         r['model_size'] = rewrite_AIFeynman_model_size(raw_model)
+    
+    signal.signal(signal.SIGALRM, timeout_handler)
+    signal.alarm(10)
 
     try:
         cleaned_model = clean_pred_model(raw_model, dataset, est_name)
@@ -57,7 +65,7 @@ def assess_symbolic_model_from_file(json_file, dataset):
 
         # if the model is somewhat accurate, check and see if it
         # is an exact symbolic match
-        if r['r2_test'] > 0.5:
+        if r['r2_test'] > 0.99:
             sym_diff = round_floats(true_model - cleaned_model)
             sym_frac = round_floats(cleaned_model/true_model)
             print('sym_diff:',sym_diff)
