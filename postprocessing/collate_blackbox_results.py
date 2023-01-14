@@ -140,9 +140,7 @@ for col in ['algorithm','dataset']:
 ##########
 # save results
 ##########
-df_old = pd.read_feather('../results/black-box_results.feather')
-result = pd.concat([df_old, df_results]).reset_index()
-result.to_feather('../results/black-box_results.feather')
+df_results.to_feather('../results/black-box_results.feather')
 print('results saved to ../results/black-box_results.feather')
 
 ########

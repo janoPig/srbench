@@ -110,8 +110,6 @@ df_results.loc[:,'symbolic_solution'] = df_results['symbolic_solution'] & ~(df_r
 ##########
 # save results
 ##########
-df_old = pd.read_feather('../results/ground-truth_results.feather')
-result = pd.concat([df_old, df_results]).reset_index()
-result.to_feather('../results/ground-truth_results.feather')
+df_results.to_feather('../results/ground-truth_results.feather')
 print('results saved to ../results/ground-truth_results.feather')
 
