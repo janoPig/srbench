@@ -1,4 +1,4 @@
-from HROCH import PHCRegressor as PHCRegressor3
+from HROCH import SymbolicRegressor as PHCRegressor3
 from symbolic_utils import complexity as cplx
 import sympy as sp
 
