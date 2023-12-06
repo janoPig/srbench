@@ -10,6 +10,7 @@ dependencies:
     - tqdm
     - pyarrow
     - pip=20.3.3 
+    - pybind11
     - pip:
         - pmlb==1.0.1.post3
         # HROCH
