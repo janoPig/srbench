@@ -38,13 +38,11 @@ symbolic_algs = [
     'Operon',
     'SBP-GP',
     'AIFeynman',
-    'HROCH'
 ]
 nongp_algs = [
     'BSR',
     'DSR',
     'AIFeynman',
-    'HROCH'
 ]
 gp_algs = [
     'AFP', 
@@ -123,8 +121,6 @@ df_results['algorithm'] = df_results['algorithm'].apply(lambda x: x.replace('sem
 df_results['algorithm'] = df_results['algorithm'].apply(lambda x: x.replace('FE_AFP','AFP_FE'))
 # rename GPGOMEA to GP-GOMEA
 df_results['algorithm'] = df_results['algorithm'].apply(lambda x: x.replace('GPGOMEA','GP-GOMEA'))
-# rename PHC to HROCH
-df_results['algorithm'] = df_results['algorithm'].apply(lambda x: x.replace('PHC', 'HROCH'))
 # add modified R2 with 0 floor
 df_results['r2_zero_test'] = df_results['r2_test'].apply(lambda x: max(x,0))
 # label friedman ddatasets

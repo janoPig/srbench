@@ -13,4 +13,4 @@ dependencies:
     - pip:
         - pmlb==1.0.1.post3
         # HROCH
-        - git+https://github.com/janoPig/HROCH.git
+        - git+https://github.com/BRANCH_PLACEHOLDER
