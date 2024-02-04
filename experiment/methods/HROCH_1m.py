@@ -9,8 +9,8 @@ est = HROCH_1m(time_limit=60.0, num_threads=1)
 
 
 def model(est):
-    return str(est.sexpr)
+    return str(est.sexpr_)
 
 
 def complexity(est):
-    return cplx(sp.parse_expr(est.sexpr))
+    return cplx(sp.parse_expr(est.sexpr_))
